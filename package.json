@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@hono/node-server": "^1.19.11",
+    "hono": "^4.12.9",
+    "johnny-five": "^2.1.0"
+  },
+  "type": "module"
+}

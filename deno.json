@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "test": "clear; deno test --coverage",
+    "test:watch": "deno test -A --watch"},
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.17",
+    "@std/testing": "jsr:@std/testing@^1.0.17"
+  }
+}
