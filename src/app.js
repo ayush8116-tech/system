@@ -7,14 +7,8 @@ export const createApp = () => {
   const app = new Hono()
 
   app.use(logger())
+  console.log("i pushed in system repo request came in chat-app repo...", "cool HuH....");
   
-  app.get("/github-webhook", async (c) => {
-    const payload = await c.req.body()
-    console.log("coming", payload);
-
-    return c.text("bye");
-  })
-
   app.get("*", serveStatic({root: "./public"}))
 
   return app;
