@@ -1,7 +1,7 @@
 import {Hono} from "hono";
 import {logger} from "hono/logger";
 import {serveStatic} from "@hono/node-server/serve-static";
-import { alert } from "../indicator/indicator.js";
+import { alert } from "../indicator/talk.js";
 
 export const createApp = () => {
   const app = new Hono()
@@ -12,10 +12,9 @@ export const createApp = () => {
     const payload = await c.req.json();
     const conclusion = payload["workflow_run"].conclusion;
     
-    console.log(conclusion, typeof conclusion);
-    
-    if(conclusion !== "null") {
-      alert(conclusion)
+    const committer = payload["workflow_run"]["head_commit"].committer.name;
+    if(conclusion !== null) {
+      alert(conclusion, committer)
     }
     console.log(conclusion, "request came in system");
     return c.text(`alerted on the light according to ${conclusion}...`)
@@ -25,5 +24,3 @@ export const createApp = () => {
 
   return app;
 }
-
-
